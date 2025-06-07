@@ -17,6 +17,8 @@ pipeline {
                     npm i
                     npm run build
                     ls -la
+                    test build/index.html
+                    npm test
                 '''
             }
         }
