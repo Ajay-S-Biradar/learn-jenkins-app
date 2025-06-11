@@ -19,13 +19,17 @@ pipeline {
                 '''
             }
         }
-        stage ("Test"){
+        stage("Test") {
             steps {
-                sh '''test -f build/index.html
-                    npm test'''
+                sh '''
+                    test -f build/index.html
+                    npm test
+                    JEST_JUNIT_OUTPUT_DIR=test-results JEST_JUNIT_OUTPUT_NAME=junit.xml npx jest --reporters=default --reporters=jest-junit
+                '''
             }
         }
     }
+
     post {
         always {
             junit 'test-results/junit.xml'
