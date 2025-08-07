@@ -63,5 +63,5 @@ pipeline {
         always {
             junit 'jest-results/junit.xml'
         }
-    }
+    } 
 }
