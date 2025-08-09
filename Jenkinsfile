@@ -1,4 +1,10 @@
 pipeline {
+
+    environment {
+       NETLIFY_SITE_ID = "1830f91c-4ca3-4233-9eae-87f6cbfff75b"
+       NETLIFY_AUTH_TOKEN = credentails('netlify-token')
+    }
+
     agent any
 
     stages {
@@ -83,6 +89,7 @@ pipeline {
                 sh '''
                     npm install netlify-cli@20.1.1
                     node_modules/.bin/netlify --version
+                    node_modules/.bin/netlify status
                 '''
             }
         }
